@@ -1,0 +1,8 @@
+yum update -y
+amazon-linux-extras enable php8.2
+yum clean metadata
+yum install httpd php git -y
+systemctl restart httpd && systemctl enable httpd
+git clone https://github.com/lynxmaestro/aws-elb-site.git /var/website/
+cp -r /var/website/* /var/www/html/
+chown -R apache:apache /var/www/html/
